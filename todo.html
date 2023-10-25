@@ -49,6 +49,12 @@
     });
   }
 
+  // Local storage 
+  function saveTodos(){
+    localStorage.setItem('Key', JSON.stringify(todos) );
+  }
+
+
   // Controller Section
   function addTodo(){
   const textbox = document.getElementById('todo-title');
