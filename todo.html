@@ -26,31 +26,18 @@
   }];
 
   // creates a todo 
-  
-
-  function addTodo(){
-  const textbox = document.getElementById('todo-title');
-  const title = textbox.value;
-
-  const datePicker = document.getElementById('date-picker');
-  const dueDate = datePicker.value;
-
-  const id = '' + new Date().getTime();
+  function createTodo(title, dueDate){
+    const id = '' + new Date().getTime();
 
   todos.push({
-    title: title,
-    dueDate: dueDate,
-    id: id
+  title: title,
+  dueDate: dueDate,
+  id: id
   });
-  
-  render();
-
   }
-    
-  function deleteTodo(event){
-    const deleteButton = event.target;
-    const idToDelete = deleteButton.id;
 
+  // deletes a todo 
+  function removeTodo(idToDelete){
     todos = todos.filter(function(todo){
       if(todo.id == idToDelete){
         return false;
@@ -60,9 +47,28 @@
       }
 
     });
-    render();
   }
 
+  function addTodo(){
+  const textbox = document.getElementById('todo-title');
+  const title = textbox.value;
+
+  const datePicker = document.getElementById('date-picker');
+  const dueDate = datePicker.value;
+
+    createTodo(title, dueDate);
+  
+  render();
+
+  }
+    
+  function deleteTodo(event){
+    const deleteButton = event.target;
+    const idToDelete = deleteButton.id;
+    removeTodo(idToDelete);
+    render();
+  }
+  // view  
   function render(){
 
   // reset our list
