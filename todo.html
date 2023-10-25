@@ -49,6 +49,7 @@
     });
   }
 
+  // Controller Section
   function addTodo(){
   const textbox = document.getElementById('todo-title');
   const title = textbox.value;
@@ -56,7 +57,7 @@
   const datePicker = document.getElementById('date-picker');
   const dueDate = datePicker.value;
 
-    createTodo(title, dueDate);
+  createTodo(title, dueDate);
   
   render();
 
@@ -90,7 +91,7 @@
   todoList.appendChild(element);
   });
 
-   }
+  }
 
 </script>
 </body>
