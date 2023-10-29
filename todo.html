@@ -6,7 +6,7 @@
     
     <input id = "todo-title" type="text"></input>
     <input id = "date-picker" type="date"/> 
-    <button onclick="addTodo(); ">Add Todo</button>
+    <button onclick = addTodo(); >Add Todo</button>
 
     <div id = "todo-list"> </div>
 <script>
@@ -14,27 +14,18 @@
   // If localStorage has a todos array, then use it
   // otherwise use the default arr
   let todos;
-  // retrieve local sorage
-  const saveTodos = JSON.parse(localStorage.getItem('todos'));
-  // check if it'a an array
-  if(Array.isArray(saveTodos)){
-    todos = saveTodos;
 
-  }else {
-    todos = [{
-    title : 'Get Groceries',
-    dueDate: '2023-10-04',
-    id: 'id1',
-  }, {
-    title: 'wash Car',
-    dueDate: '2023-05-14',
-    id: 'id2',
-  },{
-    title: 'Make Dinner',
-    dueDate: '2023-08-17',
-    id: 'id3',
-  }];
+
+  // retrieve local sorage
+  const savedTodos = JSON.parse(localStorage.getItem('todos'));
+
+  
+  // check if it'a an array
+  if(Array.isArray(savedTodos)){
+    // console.log(saveTodos)
+    todos = savedTodos;
   }
+  
 
 
   // creates a todo 
@@ -62,12 +53,12 @@
 
     });
 
-    saveTodos();
+    saveTodosLS();
   }
 
   // Local storage 
-  function saveTodos(){
-    localStorage.setItem('Key', JSON.stringify(todos) );
+  function saveTodosLS(){
+    localStorage.setItem('todos', JSON.stringify(todos) );
   }
 
 
@@ -101,7 +92,7 @@
   const element = document.createElement('div');
   element.innerText = todo.title + ' ' + todo.dueDate;
 
-    const eleteButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Delete';
     deleteButton.style = 'margin-left: 16px';
     deleteButton.onclick = deleteTodo;
@@ -109,7 +100,7 @@
     element.appendChild(deleteButton);
 
 
-  const todoList = document.getElementById('todoo-list');
+  const todoList = document.getElementById('todo-list');
   todoList.appendChild(element);
   });
 
